@@ -7,6 +7,8 @@ from rest_framework.response import Response
 
 from apps.users.serializers import UserSerializer, ProfileSerializer
 
+from apps.advertisement.serializers import AdvertisementSerializer
+
 UserModel = get_user_model()
 
 
@@ -14,6 +16,16 @@ class UserListCreateView(ListCreateAPIView):
     permission_classes = (AllowAny,)
     queryset = UserModel.objects.all()
     serializer_class = UserSerializer
+
+    def post(self, *args, **kwargs):
+        profile = self.get_object()
+        data = self.request.data
+        serializer = AdvertisementSerializer(data=data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save(profile=profile)
+        profile_serializer = ProfileSerializer(profile)
+        return Response(profile_serializer.data, status.HTTP_201_CREATED)
+
 
 class UserBlockView(GenericAPIView):
     permission_classes = (IsAdminUser,)

@@ -4,6 +4,8 @@ from apps.users.models import ProfileModel
 
 from django.contrib.auth import get_user_model
 
+from apps.advertisement.serializers import AdvertisementSerializer
+
 UserModel = get_user_model()
 
 
@@ -18,6 +20,7 @@ class UserSerializer(serializers.ModelSerializer):
     profile = ProfileSerializer()
 
     class Meta:
+
         model = UserModel
         fields = (
             'id',
@@ -27,12 +30,13 @@ class UserSerializer(serializers.ModelSerializer):
             'is_staff',
             'is_superuser',
             'account_type',
+            'is_seller',
             'last_login',
             'created_at',
             'updated_at',
             'profile'
         )
-        read_only_fields = ('id', 'is_active', 'is_staff', 'is_superuser', 'account_type', 'last_login', 'created_at')
+        read_only_fields = ('id', 'is_active', 'is_staff', 'is_superuser', 'account_type', 'is_seller', 'last_login', 'created_at')
         extra_kwargs = {
             'password': {
                 'write_only': True,

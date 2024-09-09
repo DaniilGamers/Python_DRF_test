@@ -1,5 +1,5 @@
 from rest_framework import status
-from rest_framework.generics import (CreateAPIView, GenericAPIView, ListAPIView, RetrieveAPIView, RetrieveUpdateDestroyAPIView, UpdateAPIView)
+from rest_framework.generics import (CreateAPIView, GenericAPIView, ListAPIView, ListCreateAPIView, RetrieveAPIView, RetrieveUpdateDestroyAPIView, UpdateAPIView)
 
 from rest_framework.permissions import AllowAny, IsAdminUser, IsAuthenticated
 from rest_framework.response import Response
@@ -12,9 +12,15 @@ from apps.advertisement.models import AdvertisementModel
 from apps.advertisement.serializers import AdvertisementSerializer, AdvertisementPhotoSerializer
 
 
+class AdvertisementCreateListView(ListCreateAPIView):
+    serializer_class = AdvertisementSerializer
+    queryset = AdvertisementModel.objects.all()
+    permission_classes = (IsSeller,)
+
+
 class AdvertisementListView(ListAPIView):
     serializer_class = AdvertisementSerializer
-    queryset = AdvertisementModel
+    queryset = AdvertisementModel.objects.all()
     permission_classes = (IsSeller,)
 
 
@@ -25,11 +31,11 @@ class AdvertisementRetrieveUpdateDestroyView(RetrieveUpdateDestroyAPIView):
     def get_permissions(self):
         if self.request.method == 'DELETE':
             return (IsAuthenticated(),)
-        return (IsSeller(),)
+        return (IsSeller,)
 
 
 class AdvertisementAddPhotoView(UpdateAPIView):
-    permission_classes = (IsSeller,)
+    permission_classes = (AllowAny,)
     serializer_class = AdvertisementPhotoSerializer
     queryset = AdvertisementModel.objects.all()
     http_method_names = ('put',)
