@@ -8,6 +8,8 @@ from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, Abstr
 from apps.users.managers import UserManager
 
 
+
+
 class UserModel(AbstractBaseUser, PermissionsMixin, BaseModel,):
     class Meta:
         db_table = 'auth_user2'
@@ -25,18 +27,9 @@ class UserModel(AbstractBaseUser, PermissionsMixin, BaseModel,):
         ('premium', 'Premium'),
     ]
 
-    account_type = models.CharField(
-        max_length=10,
-        choices=ACCOUNT_TYPE_CHOICES,
-        default='basic',
-    )
-
     is_premium = models.BooleanField(default=False)
 
-    def upgrade_to_premium(self):
-        self.account_type = 'premium'
-        self.is_premium = True
-        self.save()
+    is_basic = models.BooleanField(default=False)
 
 
 class ProfileModel(BaseModel):
@@ -47,4 +40,4 @@ class ProfileModel(BaseModel):
     name = models.CharField(max_length=20)
     surname = models.CharField(max_length=20)
     age = models.IntegerField()
-    user = models.OneToOneField(UserModel, on_delete=models.CASCADE, related_name='profile')
+    user = models.ForeignKey(UserModel, on_delete=models.CASCADE, related_name='profile')

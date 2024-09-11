@@ -1,8 +1,12 @@
+from django.contrib.auth import get_user_model
+
+from django.shortcuts import render
+
+
 from rest_framework import status
 from rest_framework.generics import (CreateAPIView, GenericAPIView, ListAPIView, ListCreateAPIView, RetrieveAPIView, RetrieveUpdateDestroyAPIView, UpdateAPIView)
 
 from rest_framework.permissions import AllowAny, IsAdminUser, IsAuthenticated
-from rest_framework.response import Response
 
 from core.permissions.is_super_user_permission import IsSuperUser
 from core.permissions.is_seller import IsSeller
@@ -10,6 +14,12 @@ from core.permissions.is_seller import IsSeller
 from apps.advertisement.models import AdvertisementModel
 
 from apps.advertisement.serializers import AdvertisementSerializer, AdvertisementPhotoSerializer
+
+from apps.users.models import ProfileModel
+
+UserModel = get_user_model()
+
+BASIC_USER_AD_LIMIT = 5
 
 
 class AdvertisementCreateListView(ListCreateAPIView):
@@ -30,8 +40,8 @@ class AdvertisementRetrieveUpdateDestroyView(RetrieveUpdateDestroyAPIView):
 
     def get_permissions(self):
         if self.request.method == 'DELETE':
-            return (IsAuthenticated(),)
-        return (IsSeller,)
+            return (IsSeller(),)
+        return (IsSeller,), (IsSuperUser,)
 
 
 class AdvertisementAddPhotoView(UpdateAPIView):

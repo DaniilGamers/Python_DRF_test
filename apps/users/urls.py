@@ -1,6 +1,6 @@
 from django.urls import path
 
-from apps.users.views import UserListCreateView, UserBlockView, UserUnBlockView, UserToSellerView, UserToStaffView, UserToSuperuserView
+from apps.users.views import UserListCreateView, UserBlockView, UserUnBlockView, UserToSellerView, UserToStaffView, UserToSuperuserView, BasicToPremium
 
 urlpatterns = [
     path('', UserListCreateView.as_view()),
@@ -8,5 +8,7 @@ urlpatterns = [
     path('/<int:pk>/unblock', UserUnBlockView.as_view()),
     path('/<int:pk>/seller', UserToSellerView.as_view()),
     path('/<int:pk>/staff', UserToStaffView.as_view()),
-    path('/<int:pk>/superuser', UserToSuperuserView.as_view())
+    path('/<int:pk>/superuser', UserToSuperuserView.as_view()),
+
+    path('/<int:pk>/to_premium', BasicToPremium.as_view())
 ]

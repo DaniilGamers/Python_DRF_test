@@ -10,14 +10,14 @@ UserModel = get_user_model()
 
 
 class ProfileSerializer(serializers.ModelSerializer):
-
+    advertisement = AdvertisementSerializer(many=True)
     class Meta:
         model = ProfileModel
-        fields = ('id', 'name', 'surname', 'age', 'created_at', 'updated_at')
+        fields = ('id', 'name', 'surname', 'age', 'created_at', 'updated_at', 'advertisement',)
 
 
 class UserSerializer(serializers.ModelSerializer):
-    profile = ProfileSerializer()
+    profile = ProfileSerializer(),
 
     class Meta:
 
@@ -29,12 +29,14 @@ class UserSerializer(serializers.ModelSerializer):
             'is_active',
             'is_staff',
             'is_superuser',
-            'account_type',
+            'is_basic',
+            'is_premium',
             'is_seller',
             'last_login',
             'created_at',
             'updated_at',
-            'profile'
+            'profile',
+
         )
         read_only_fields = ('id', 'is_active', 'is_staff', 'is_superuser', 'account_type', 'is_seller', 'last_login', 'created_at')
         extra_kwargs = {

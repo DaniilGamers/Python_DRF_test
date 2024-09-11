@@ -12,7 +12,7 @@ from apps.users.models import ProfileModel, UserModel
 class AdvertisementModel(BaseModel):
     class Meta:
         db_table = 'advertisement'
-        ordering = ['id']
+        ordering = ('-id',)
 
     brand = models.CharField(max_length=10, validators=(V.MinLengthValidator(2),))
     model = models.CharField(max_length=10, validators=(V.MinLengthValidator(2),))
@@ -28,4 +28,5 @@ class AdvertisementModel(BaseModel):
     ]
 
     money_currency = models.CharField(max_length=10, choices=MONEY_CURRENCY_CHOICES, blank=False)
+    user = models.ForeignKey(ProfileModel, on_delete=models.CASCADE, related_name='advertisement')
 

@@ -5,6 +5,10 @@ from rest_framework.generics import GenericAPIView, ListCreateAPIView
 from rest_framework.permissions import AllowAny, IsAdminUser
 from rest_framework.response import Response
 
+from core.permissions.is_super_user_permission import IsSuperUser
+
+from core.permissions.is_seller import IsSeller
+
 from apps.users.serializers import UserSerializer, ProfileSerializer
 
 from apps.advertisement.serializers import AdvertisementSerializer
@@ -17,18 +21,9 @@ class UserListCreateView(ListCreateAPIView):
     queryset = UserModel.objects.all()
     serializer_class = UserSerializer
 
-    def post(self, *args, **kwargs):
-        profile = self.get_object()
-        data = self.request.data
-        serializer = AdvertisementSerializer(data=data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save(profile=profile)
-        profile_serializer = ProfileSerializer(profile)
-        return Response(profile_serializer.data, status.HTTP_201_CREATED)
-
 
 class UserBlockView(GenericAPIView):
-    permission_classes = (IsAdminUser,)
+    permission_classes = (IsSuperUser,)
     serializer_class = UserSerializer
 
     def get_queryset(self):
@@ -46,7 +41,7 @@ class UserBlockView(GenericAPIView):
 
 
 class UserUnBlockView(GenericAPIView):
-    permission_classes = (IsAdminUser,)
+    permission_classes = (IsSuperUser,)
     serializer_class = UserSerializer
 
     def get_queryset(self):
@@ -75,14 +70,14 @@ class UserToSellerView(GenericAPIView):
 
         if not user.is_seller:
             user.is_seller = True
-            user.type_account = 'Basic'
+            user.is_basic = True
             user.save()
         serializer = UserSerializer(user)
         return Response(serializer.data, status.HTTP_200_OK)
 
 
 class UserToStaffView(GenericAPIView):
-    permission_classes = (IsAdminUser,)
+    permission_classes = (IsSuperUser,)
     serializer_class = UserSerializer
 
     def get_queryset(self):
@@ -99,7 +94,9 @@ class UserToStaffView(GenericAPIView):
 
 
 class UserToSuperuserView(GenericAPIView):
-    permission_classes = (IsAdminUser,)
+
+    permission_classes = (IsSuperUser,)
+
     serializer_class = UserSerializer
 
     def get_queryset(self):
@@ -116,7 +113,7 @@ class UserToSuperuserView(GenericAPIView):
 
 
 class SuperuserToUserView(GenericAPIView):
-    permission_classes = (IsAdminUser,)
+    permission_classes = (IsSuperUser,)
     serializer_class = UserSerializer
 
     def get_queryset(self):
@@ -127,6 +124,24 @@ class SuperuserToUserView(GenericAPIView):
 
         if user.is_superuser:
             user.is_superuser = False
+            user.save()
+        serializer = UserSerializer(user)
+        return Response(serializer.data, status.HTTP_200_OK)
+
+
+class BasicToPremium(GenericAPIView):
+    permission_classes = (IsSeller,)
+    serializer_class = UserSerializer
+
+    def get_queryset(self):
+        return UserModel.objects.exclude(pk=self.request.user.pk)
+
+    def patch(self, *args, **kwargs):
+        user = self.get_object()
+
+        if user.is_seller:
+            user.is_premium = True
+            user.is_basic = False
             user.save()
         serializer = UserSerializer(user)
         return Response(serializer.data, status.HTTP_200_OK)
