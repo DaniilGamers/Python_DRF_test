@@ -1,0 +1,866 @@
+{
+	"info": {
+		"_postman_id": "e9d1408d-f8d2-4d08-89c7-d1d1f55ea3b3",
+		"name": "Test_DRF",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "35284563"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "login_admin",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "testAdmin5@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "super123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/auth",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login_staff",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "testManager@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "super123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/auth",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login_seller",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "testSeller10@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "super123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/auth",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login_client",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "testBuyer5@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "super123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/auth",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Advertisement",
+			"item": [
+				{
+					"name": "Sorts",
+					"item": [
+						{
+							"name": "Sort_by_year",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/advertisement?year_gt=1995&year_in=2000",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"advertisement"
+									],
+									"query": [
+										{
+											"key": "year_gt",
+											"value": "1995"
+										},
+										{
+											"key": "year_lt",
+											"value": "2000",
+											"disabled": true
+										},
+										{
+											"key": "year_in",
+											"value": "2000"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Sort_by_price",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY3MzA5MTAyLCJpYXQiOjE3NjczMDg4MDIsImp0aSI6IjczOWFhZjQ0NTY0NDQ0ZjdhYjY1MjA3YzNkYTRhZDYzIiwidXNlcl9pZCI6MTN9.5KuEAWRMckj69Mgb8YFhUMpAFoNVfDNQ6MGoUtQgqLg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/advertisement?price_in=5000",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"advertisement"
+									],
+									"query": [
+										{
+											"key": "price_gt",
+											"value": "4000",
+											"disabled": true
+										},
+										{
+											"key": "price_lt",
+											"value": "8000",
+											"disabled": true
+										},
+										{
+											"key": "price_in",
+											"value": "5000"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Sort_by_brand",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY3MzA5NTE4LCJpYXQiOjE3NjczMDkyMTgsImp0aSI6ImY5OTE4Y2Q5OGRlZDQ2OWRhMWM4NjM4YzlkZDE0MmI1IiwidXNlcl9pZCI6MTJ9.QSoVOZRkq8snZumfxqmtTAISaVFhOxFx6MxwkQkMV3o",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/advertisement?brand=bmw",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"advertisement"
+									],
+									"query": [
+										{
+											"key": "brand",
+											"value": "bmw"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "premium_only",
+					"item": [
+						{
+							"name": "ad_stats",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY3MzA2NzMyLCJpYXQiOjE3NjczMDY0MzIsImp0aSI6IjY3Y2E4ZWFkOGEwYTQ2NzViMDFhMGUzM2FhM2YzZDFhIiwidXNlcl9pZCI6MTN9.nfHJzt3GcXSirB-Li7Ko4BhR9Z1JG5D0RqYUNdCeryU",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/advertisement/36/ad_stats",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"advertisement",
+										"36",
+										"ad_stats"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "CreateAd",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY3MzA3NzIzLCJpYXQiOjE3NjczMDc0MjMsImp0aSI6ImZhOGJkYzVjNjRlMzRhOTI5MWZiZjdiZWJhODk0ZTIyIiwidXNlcl9pZCI6MTN9.e_Tppef3PLimR1kd8RTLXJmAr9I4k1nKpAN-hUQ3Ng8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "brand",
+									"value": "Ferrari",
+									"type": "text"
+								},
+								{
+									"key": "model",
+									"value": "X5",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Hi everyone! I sell this car today!",
+									"type": "text"
+								},
+								{
+									"key": "price_original",
+									"value": "8000",
+									"type": "text"
+								},
+								{
+									"key": "year",
+									"value": "1995",
+									"type": "text"
+								},
+								{
+									"key": "currency",
+									"value": "USD",
+									"type": "text"
+								},
+								{
+									"key": "city",
+									"value": "Kyiv",
+									"type": "text"
+								},
+								{
+									"key": "photo_file",
+									"type": "file",
+									"src": "/C:/Users/Daniel/Downloads/a1acb198906e6daaa3fde62fc36d2bb0.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/advertisement/create",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"advertisement",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editAd",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY3MjAzMTI2LCJpYXQiOjE3NjcyMDI4MjYsImp0aSI6IjhkZjE1M2M1Y2ZkYzRkYjU4MDIyMWUzMzEzMzEyNjliIiwidXNlcl9pZCI6MTN9.okUar1ZgiHstFSEoveTnRWJsHgxWbaGQkJ0hkjCDpxs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "brand",
+									"value": "BMW",
+									"type": "text"
+								},
+								{
+									"key": "model",
+									"value": "X34",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Hi everyone! I sell this car today! блядь!",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "5000",
+									"type": "text"
+								},
+								{
+									"key": "year",
+									"value": "2000",
+									"type": "text"
+								},
+								{
+									"key": "money_currency",
+									"value": "UAH",
+									"type": "text"
+								},
+								{
+									"key": "city",
+									"value": "Kyiv",
+									"type": "text"
+								},
+								{
+									"key": "photo_file",
+									"type": "file",
+									"src": "/C:/Users/Daniel/Downloads/a1acb198906e6daaa3fde62fc36d2bb0.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/advertisement/22/edit_ad",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"advertisement",
+								"22",
+								"edit_ad"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "allAds",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY3MDQ5ODA5LCJpYXQiOjE3NjcwNDk1MDksImp0aSI6ImVmNWFlMTM3OWQ2MDQ4MTg5NjVhMzk3ZjRjMDE4Mjg5IiwidXNlcl9pZCI6MTF9.SsIY1_F0relKEp3_rwMzVhxytI_Fc8y959HfyoZjqD8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/advertisement",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"advertisement"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteAd",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY3MTMzMTY0LCJpYXQiOjE3NjcxMzI4NjQsImp0aSI6ImZlYWY3ZDY2NzNlYjRkMTZiOWRkYTQxMDIxN2IwMTQ0IiwidXNlcl9pZCI6MTF9.4T-GFMMWHRNtyGbpINRXWyRHcAF5NF4OxmWpdRntTvQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/advertisement/12",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"advertisement",
+								"12"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ad_view",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/advertisement/36/view",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"advertisement",
+								"36",
+								"view"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "Admin and staff",
+					"item": [
+						{
+							"name": "BlockUser",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU5MDA1OTMwLCJpYXQiOjE3NTkwMDU2MzAsImp0aSI6ImY0MTgwOWMwYWNiZDRmMzU4MzI5NjQxZGZiZDU3NjgzIiwidXNlcl9pZCI6NX0.VBKkou9vnW5WsR2T5S6UPLwZTMyCe7a-aMCdSAHBXus",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/users/1/block",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"users",
+										"1",
+										"block"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UnBlockUser",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU5MTc0NDU3LCJpYXQiOjE3NTkxNzQxNTcsImp0aSI6ImY2M2Y4ZDU4Y2RiODQwYzFhYzU5ZjJjMDU5ZGQ2MmM3IiwidXNlcl9pZCI6NX0.ZZXAnYmVJZQL_CMYdyP2--NQBC5q4wPYV5vlHVUVtwc",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/users/1/unblock",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"users",
+										"1",
+										"unblock"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "createManager",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU5MTc5ODcwLCJpYXQiOjE3NTkxNzk1NzAsImp0aSI6IjRmMjg4ZjFmMDg3ODQ4ZGFiZDBmZmE1NWE0OWYwMDJkIiwidXNlcl9pZCI6N30.HQ-iS0zUoBd3gjUg78Yb6PppfOrm1lHo5U3Yltp9inA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\" : \"testManager@gmail.com\",\r\n    \"password\" : \"super123\",\r\n    \"profile\" : {\r\n        \"name\" : \"test1111\",\r\n        \"surname\" : \"dwon\",\r\n        \"age\" : 19,\r\n        \"phone_number\" : \"+48238570177\"\r\n        \r\n\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/users/createManager",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"users",
+										"createManager"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "allUsers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/users",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"testSeller10@gmail.com\",\r\n    \"password\" : \"super123\",\r\n    \"profile\" : {\r\n        \"name\" : \"Daniel244323\",\r\n        \"surname\" : \"DanielGamers112\",\r\n        \"age\" : 20\r\n        \r\n\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/users",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Become_a_seller",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/users/13/seller",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"13",
+								"seller"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Become_a_client",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/users/12/client",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"12",
+								"client"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteUser",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY3MzEzMjU1LCJpYXQiOjE3NjczMTI5NTUsImp0aSI6ImE3NTM5ODhiZDUzYzRmNGNiODBjOWY3MDViYTk3Zjc3IiwidXNlcl9pZCI6MTJ9.cOaM3C6bvaw1OlUyFU1YBtQ6-gjjl96iMVCBbFv_ox8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/users/6/delete",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"6",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buy_premium",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY3MjE5NTcwLCJpYXQiOjE3NjcyMTkyNzAsImp0aSI6IjNhZjJkYWViMThlZTQ2ZTM5OThjZjNlMTM4YjRiOWI3IiwidXNlcl9pZCI6MTN9.sWPw5XYRfuGUmra5xVgWZOH11SKjaZAFQFJtkfjHkzY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"provider\": \"paypal\",\r\n    \"force_fail\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/users/buy_premium",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"buy_premium"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Chat",
+			"item": [
+				{
+					"name": "createChat",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY3MzEyMzQ4LCJpYXQiOjE3NjczMTIwNDgsImp0aSI6IjZhMTdhYzJjYTVlNzQzNTVhMjk1M2U2MzY3Y2E5Y2IyIiwidXNlcl9pZCI6MTJ9.E_AEFYL6hDlePuaKnsRY0z_D3NA9Hixt2aR1UkBvwWw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"advertisement\": 38\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/chats/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"chats",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "loadChat",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY3MzEzMjU1LCJpYXQiOjE3NjczMTI5NTUsImp0aSI6ImE3NTM5ODhiZDUzYzRmNGNiODBjOWY3MDViYTk3Zjc3IiwidXNlcl9pZCI6MTJ9.cOaM3C6bvaw1OlUyFU1YBtQ6-gjjl96iMVCBbFv_ox8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"advertisement\": 36\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/chats/2/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"chats",
+								"2",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

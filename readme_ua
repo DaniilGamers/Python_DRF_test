@@ -1,0 +1,141 @@
+Інструкція зі встановлення та використання проекту
+
+Повідомлення:
+
+* Усі API-запити надані у колекції Postman.
+  Імпортуйте колекцію в Postman перед тестуванням.
+* Для функціоналу електронної пошти:
+
+  * Оновіть EMAIL_HOST_USER та EMAIL_HOST_PASSWORD у settings.py
+  * Використовуйте Gmail та App Password
+
+---
+
+Активація:
+
+Запуск сервера:
+
+```bash
+python manage.py runserver
+```
+
+Сервер працює на [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
+
+---
+
+Користувачі та ролі
+
+Консоль:
+
+* Створення суперкористувача (Admin):
+
+```bash
+python manage.py createsuperuser
+```
+
+Для управління персоналом та налаштуваннями системи.
+
+Postman:
+
+* Створити користувача: Test_DRF/users/CreateUser (Будь-хто може створити акаунт)
+* Стати продавцем: Test_DRF/users/Become_a_seller (Користувач стає базовим продавцем)
+* Стати клієнтом: Test_DRF/users/Become_a_client (Користувач стає клієнтом)
+* Отримати всіх користувачів: Test_DRF/users/allUsers (Доступно переважно для staff/admin)
+* Видалити користувача: Test_DRF/users/DeleteUser (Авторизовані користувачі можуть видалити свій акаунт; Admin/Staff можуть видалити будь-якого користувача)
+* Купити преміум: Test_DRF/users/buy_premium (Оплата симульована; force_fail=true для симуляції помилки)
+
+Адмін та персонал:
+
+* Створити персонал: Test_DRF/users/Admin and staff/createManager (Тільки Admin)
+* Заблокувати користувача: Test_DRF/users/Admin and staff/BlockUser
+* Розблокувати користувача: Test_DRF/users/Admin and staff/UnBlockUser
+
+---
+
+Аутентифікація
+
+Postman Login:
+
+* Логін Admin: Test_DRF/auth/login_admin
+* Логін Staff: Test_DRF/auth/login_staff
+* Логін Seller: Test_DRF/auth/login_seller
+* Логін Client: Test_DRF/auth/login_client
+
+Аутентифікація через JWT (SimpleJWT).
+
+---
+
+Оголошення
+
+Postman:
+
+* Створити оголошення: Test_DRF/Advertisement/CreateAd (Базові продавці: 1 оголошення; Преміум: необмежено)
+* Редагувати оголошення: Test_DRF/Advertisement/editAd (Максимум 3 спроби через модерацію)
+* Видалити оголошення: Test_DRF/Advertisement/DeleteAd (Продавець / Staff / Admin)
+* Переглянути оголошення: Test_DRF/Advertisement/ad_view (Публічний доступ)
+
+Преміум тільки:
+
+* Перегляд статистики оголошення: Test_DRF/Advertisement/premium_only/ad_stats (Тільки для преміум продавців)
+
+Сортування та фільтрування:
+
+* Сортування за роком: Sort_by_year (year_lt, year_gt, year_in)
+* Сортування за ціною: Sort_by_price (price_lt, price_gt, price_in)
+* Сортування за брендом: Sort_by_brand (brand)
+
+---
+
+Система чату
+
+Postman:
+
+* Створити чат: Test_DRF/Chat/createChat (Клієнт ініціює чат з реклами)
+* Завантажити чат: Test_DRF/Chat/loadChat (За chat ID)
+
+Фронтенд (HTML + JS):
+
+* Фронтенд відокремлений від Django templates
+* Перемістіть HTML папку поза проектом Django (наприклад, на Робочий стіл)
+* Відкрийте chat.html у браузері
+* Відкрийте два браузери:
+
+  * Один як клієнт
+  * Один як продавець
+* Надсилайте повідомлення між користувачами
+* Повідомлення зберігаються після перезавантаження
+* Використовує JWT, Fetch API та CORS
+* Повідомлення відсортовані за часом
+
+---
+
+Postman & Mock дані
+
+Тестові облікові записи:
+
+Роль	Email	                Пароль
+Admin	testAdmin5@gmail.com	super123
+Staff	testManager@gmail.com	super123
+Seller	testSeller10@gmail.com	super123
+Client	testBuyer5@gmail.com	super123
+
+Статус проекту:
+
+* JWT аутентифікація
+* Ролі та права доступу
+* Модерація оголошень
+* Логіка преміум
+* Система чату
+* Відокремлений фронтенд
+* Перевірено в Postman
+* Перевірено в консолі
+
+Фінальні зауваження:
+
+* Бекенд контролює всі чутливі поля (sender, buyer, seller)
+* Фронтенд не надсилає user IDs вручну
+* Повідомлення чату захищені та обмежені за ролями
+
+Примітка для викладача:
+
+* Фронтенд відокремлено спеціально, щоб показати API-only дизайн бекенду.

@@ -8,6 +8,7 @@ class Profile:
     name: str
     surname: str
     age: int
+    phone_number: int
     created_at: datetime
     updated_at: datetime
 

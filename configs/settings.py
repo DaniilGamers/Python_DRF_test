@@ -38,19 +38,27 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework_simplejwt',
     'rest_framework_simplejwt.token_blacklist',
+    'corsheaders',
 
     #my_apps
     'apps.users',
     'apps.advertisement',
     'apps.auth',
     'core',
+    'apps.payment',
+    'apps.chat'
 
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'corsheaders.middleware.CorsMiddleware'
 ]
+
+CORS_ALLOW_ALL_ORIGINS = True
+
+CORS_ALLOW_CREDENTIALS = True
 
 ROOT_URLCONF = 'configs.urls'
 
@@ -82,7 +90,7 @@ DATABASES = {
         'NAME': 'danieltest12',
         'USER': 'danieltest12',
         'PASSWORD': 'Test1234',
-        'HOST': 'owu.linkpc.net',
+        'HOST': '185.69.152.209',
         'PORT': '3306'
     }
 }
@@ -146,3 +154,16 @@ REST_FRAMEWORK = {
         'core.permissions.is_seller.IsSeller'
     ]
 }
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+EMAIL_HOST_USER = 'yourFromEmailHere@gmail.com'
+EMAIL_HOST_PASSWORD = 'YOUR_APP_PASSWORD'
+
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+

@@ -11,3 +11,17 @@ class IsSeller(BasePermission):
     def has_permission(self, request, view):
         user: User = request.user
         return user.is_seller
+
+
+class IsSellerOrStaffOrAdmin(BasePermission):
+
+    def has_permission(self, request, view):
+        user: User = request.user
+        return user.is_seller or user.is_staff or user.is_superuser
+
+
+class IsAdminSuper(BasePermission):
+
+    def has_permission(self, request, view):
+        user: User = request.user
+        return user.is_superuser

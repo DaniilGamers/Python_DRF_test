@@ -8,8 +8,6 @@ from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, Abstr
 from apps.users.managers import UserManager
 
 
-
-
 class UserModel(AbstractBaseUser, PermissionsMixin, BaseModel,):
     class Meta:
         db_table = 'auth_user2'
@@ -19,13 +17,10 @@ class UserModel(AbstractBaseUser, PermissionsMixin, BaseModel,):
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     is_seller = models.BooleanField(default=False)
+    is_client = models.BooleanField(default=False)
+    is_blocked = models.BooleanField(default=False)
     USERNAME_FIELD = 'email'
     objects = UserManager()
-
-    ACCOUNT_TYPE_CHOICES = [
-        ('basic', 'Basic'),
-        ('premium', 'Premium'),
-    ]
 
     is_premium = models.BooleanField(default=False)
 
@@ -40,4 +35,4 @@ class ProfileModel(BaseModel):
     name = models.CharField(max_length=20)
     surname = models.CharField(max_length=20)
     age = models.IntegerField()
-    user = models.ForeignKey(UserModel, on_delete=models.CASCADE, related_name='profile')
+    user = models.OneToOneField(UserModel, on_delete=models.CASCADE, related_name='profile')

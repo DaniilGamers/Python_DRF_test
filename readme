@@ -1,0 +1,145 @@
+Project Setup & Usage Guide
+
+Notice:
+
+* All API requests are provided in a Postman collection.
+  Import the collection into Postman before testing.
+* For email functionality:
+
+  * Update EMAIL_HOST_USER and EMAIL_HOST_PASSWORD in settings.py.
+  * Use your Gmail address and App Password.
+
+---
+
+Activation:
+
+For server activation:
+
+```bash
+python manage.py runserver
+```
+
+Server runs at [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
+
+---
+
+Users & Roles
+
+Console:
+
+* Create superuser (Admin):
+
+```bash
+python manage.py createsuperuser
+```
+
+Used to manage staff and system settings.
+
+Postman:
+
+* Create user: Test_DRF/users/CreateUser (Anyone can create an account)
+* Become seller: Test_DRF/users/Become_a_seller (User becomes basic seller)
+* Become client: Test_DRF/users/Become_a_client (User becomes client)
+* Get all users: Test_DRF/users/allUsers (Accessible mainly by staff/admin)
+* Delete user: Test_DRF/users/DeleteUser (Authorized users delete own account; Admin/Staff delete any user)
+* Buy premium: Test_DRF/users/buy_premium (Payment simulated; set force_fail=true to simulate failure)
+
+Admin & Staff:
+
+* Create staff: Test_DRF/users/Admin and staff/createManager (Admin only)
+* Block user: Test_DRF/users/Admin and staff/BlockUser
+* Unblock user: Test_DRF/users/Admin and staff/UnBlockUser
+
+---
+
+Authentication
+
+Postman Login Endpoints:
+
+* Admin login: Test_DRF/auth/login_admin
+* Staff login: Test_DRF/auth/login_staff
+* Seller login: Test_DRF/auth/login_seller
+* Client login: Test_DRF/auth/login_client
+
+Authentication is handled using JWT (SimpleJWT).
+
+---
+
+Advertisements
+
+Postman:
+
+* Create advertisement: Test_DRF/Advertisement/CreateAd (Basic sellers: 1 ad; Premium: unlimited)
+* Edit advertisement: Test_DRF/Advertisement/editAd (Max 3 attempts due to moderation)
+* Delete advertisement: Test_DRF/Advertisement/DeleteAd (Seller / Staff / Admin)
+* View advertisement: Test_DRF/Advertisement/ad_view (Public access)
+
+Premium Only:
+
+* View advertisement statistics: Test_DRF/Advertisement/premium_only/ad_stats (Premium sellers only)
+
+Important Notice:
+
+* Daily - 15s, Weekly - 30s, Monthly - 45s
+
+Sorting & Filtering:
+
+* Sort by year: Sort_by_year (year_lt, year_gt, year_in)
+* Sort by price: Sort_by_price (price_lt, price_gt, price_in)
+* Sort by brand: Sort_by_brand (brand)
+
+---
+
+Chat System
+
+Postman:
+
+* Create chat room: Test_DRF/Chat/createChat (Client initiates chat from advertisement page)
+* Load chat room: Test_DRF/Chat/loadChat (Load chat using chat ID)
+
+Frontend (HTML + JS):
+
+* Frontend is separated from Django templates
+* Move HTML folder outside Django project (e.g., Desktop)
+* Open chat.html in a browser
+* Open two browsers:
+
+  * One logged in as client
+  * One logged in as seller
+* Send messages between users
+* Messages persist after page reload
+* Uses JWT, Fetch API, and CORS
+* Messages sorted by time
+
+---
+
+Postman & Mock data
+
+Test accounts:
+
+Role	Email	                Password
+Admin	testAdmin5@gmail.com	super123
+Staff	testManager@gmail.com	super123
+Seller	testSeller10@gmail.com	super123
+Client	testBuyer5@gmail.com	super123
+
+Project Status:
+
+* JWT Authentication
+* Role-based permissions
+* Advertisement moderation
+* Premium logic
+* Chat system
+* Separate frontend
+* Postman tested
+* Console tested
+
+Final Notes:
+
+* Backend controls all sensitive fields (sender, buyer, seller)
+* Frontend never sends user IDs manually
+* Chat messages are secure and role-restricted
+
+Teacher note:
+
+* Frontend is separated intentionally to demonstrate API-only backend design.
