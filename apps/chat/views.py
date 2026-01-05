@@ -14,13 +14,13 @@ from rest_framework.exceptions import PermissionDenied
 
 class ChatCreateView(CreateAPIView):
     serializer_class = ChatSerializer
-    permission_classes = (IsClient,)
+    permission_classes = (IsAuthenticated,)
 
     def perform_create(self, serializer):
         ad = get_object_or_404(AdvertisementModel, id=self.request.data["advertisement"])
 
-        if self.request.user != self.request.user.is_client:
-            raise PermissionDenied("Only the buyer can send messages to this chat.")
+        if not getattr(self.request.user, 'is_client', False):
+            raise PermissionDenied("Only the buyer can create a chat.")
 
         serializer.save(
             buyer=self.request.user,

@@ -8,6 +8,8 @@ from rest_framework.response import Response
 
 from core.permissions.is_seller import IsSeller, IsAdminSuper
 
+from core.permissions.is_staff_or_admin import IsStaffOrAdmin
+
 from apps.users.serializers import UserSerializer, UserStaffSerializer
 
 from core.services.payment_service import PaymentService, PREMIUM_PRICE
@@ -29,7 +31,7 @@ class UserDeleteView(DestroyAPIView):
 
 
 class UserToClientView(GenericAPIView):
-    permission_classes = (AllowAny,)
+    permission_classes = (IsAuthenticated,)
     serializer_class = UserSerializer
 
     def get_queryset(self):
@@ -50,7 +52,7 @@ class UserToClientView(GenericAPIView):
 
 
 class UserToSellerView(GenericAPIView):
-    permission_classes = (AllowAny,)
+    permission_classes = (IsAuthenticated,)
     serializer_class = UserSerializer
 
     def get_queryset(self):
@@ -75,7 +77,7 @@ class UserToSellerView(GenericAPIView):
 
 
 class UserBlockView(GenericAPIView):
-    permission_classes = (IsAdminUser, IsAdminSuper)
+    permission_classes = (IsAuthenticated, IsStaffOrAdmin)
     serializer_class = UserSerializer
 
     def get_queryset(self):
@@ -99,7 +101,7 @@ class UserBlockView(GenericAPIView):
 
 
 class UserUnBlockView(GenericAPIView):
-    permission_classes = (IsAdminUser, IsAdminSuper)
+    permission_classes = (IsAuthenticated, IsStaffOrAdmin)
     serializer_class = UserSerializer
 
     def get_queryset(self):

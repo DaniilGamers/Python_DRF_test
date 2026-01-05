@@ -12,12 +12,15 @@ class Chat(models.Model):
     buyer = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
-        related_name="buyer_chats"
+        related_name="buyer_chats",
+        blank=True,
+        null=True
     )
     seller = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
-        related_name="seller_chats"
+        related_name="seller_chats",
+        blank=True
     )
     created_at = models.DateTimeField(auto_now_add=True)
 

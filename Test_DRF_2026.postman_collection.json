@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "e9d1408d-f8d2-4d08-89c7-d1d1f55ea3b3",
+		"_postman_id": "a7bc36d7-48bc-4d36-98ad-6fdcfee6b148",
 		"name": "Test_DRF",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "35284563"
@@ -166,7 +166,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{host}}/advertisement?year_gt=1995&year_in=2000",
+									"raw": "{{host}}/advertisement?year_gt=1995",
 									"host": [
 										"{{host}}"
 									],
@@ -185,7 +185,8 @@
 										},
 										{
 											"key": "year_in",
-											"value": "2000"
+											"value": "2000",
+											"disabled": true
 										}
 									]
 								}
@@ -281,7 +282,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY3MzA2NzMyLCJpYXQiOjE3NjczMDY0MzIsImp0aSI6IjY3Y2E4ZWFkOGEwYTQ2NzViMDFhMGUzM2FhM2YzZDFhIiwidXNlcl9pZCI6MTN9.nfHJzt3GcXSirB-Li7Ko4BhR9Z1JG5D0RqYUNdCeryU",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY3NjEzMDY1LCJpYXQiOjE3Njc2MTI3NjUsImp0aSI6IjgyOThkYWVmNWU4ZDQyODU4MjMzMTMwYWU2OWM4MGE3IiwidXNlcl9pZCI6IjE1In0.Y4hqJ9VqT92eO4tAA29LRkhQvr6wuPpCj1EB9CbNwxE",
 											"type": "string"
 										}
 									]
@@ -289,13 +290,13 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{host}}/advertisement/36/ad_stats",
+									"raw": "{{host}}/advertisement/39/ad_stats",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"advertisement",
-										"36",
+										"39",
 										"ad_stats"
 									]
 								}
@@ -312,7 +313,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY3MzA3NzIzLCJpYXQiOjE3NjczMDc0MjMsImp0aSI6ImZhOGJkYzVjNjRlMzRhOTI5MWZiZjdiZWJhODk0ZTIyIiwidXNlcl9pZCI6MTN9.e_Tppef3PLimR1kd8RTLXJmAr9I4k1nKpAN-hUQ3Ng8",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY3NjEyMzU0LCJpYXQiOjE3Njc2MTIwNTQsImp0aSI6IjRjNDA2MDg0MDQ3NjRjNTE4MGFlZDJiZDE1MDk4MGIxIiwidXNlcl9pZCI6IjE1In0.XTa5BFIPlW38kPAPqSFKbA1iXN4EiHyKGnW96KFxJAU",
 									"type": "string"
 								}
 							]
@@ -334,7 +335,7 @@
 								},
 								{
 									"key": "description",
-									"value": "Hi everyone! I sell this car today!",
+									"value": "Hi everyone! I sell this car today! блядь!",
 									"type": "text"
 								},
 								{
@@ -385,7 +386,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY3MjAzMTI2LCJpYXQiOjE3NjcyMDI4MjYsImp0aSI6IjhkZjE1M2M1Y2ZkYzRkYjU4MDIyMWUzMzEzMzEyNjliIiwidXNlcl9pZCI6MTN9.okUar1ZgiHstFSEoveTnRWJsHgxWbaGQkJ0hkjCDpxs",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY3NjEyOTY1LCJpYXQiOjE3Njc2MTI2NjUsImp0aSI6IjkwZGM5NjNlMmQyZTRkOGFiNDQwOWI5YTM1MjU2Y2Q5IiwidXNlcl9pZCI6IjE1In0.46deD3bNKp_E7RtFssW-xRSRDWw9yLdwvky6LVGg0L0",
 									"type": "string"
 								}
 							]
@@ -438,13 +439,13 @@
 							]
 						},
 						"url": {
-							"raw": "{{host}}/advertisement/22/edit_ad",
+							"raw": "{{host}}/advertisement/43/edit_ad",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"advertisement",
-								"22",
+								"43",
 								"edit_ad"
 							]
 						}
@@ -454,16 +455,6 @@
 				{
 					"name": "allAds",
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY3MDQ5ODA5LCJpYXQiOjE3NjcwNDk1MDksImp0aSI6ImVmNWFlMTM3OWQ2MDQ4MTg5NjVhMzk3ZjRjMDE4Mjg5IiwidXNlcl9pZCI6MTF9.SsIY1_F0relKEp3_rwMzVhxytI_Fc8y959HfyoZjqD8",
-									"type": "string"
-								}
-							]
-						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -512,13 +503,13 @@
 						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/advertisement/36/view",
+							"raw": "{{host}}/advertisement/39/view",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"advertisement",
-								"36",
+								"39",
 								"view"
 							]
 						}
@@ -541,7 +532,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU5MDA1OTMwLCJpYXQiOjE3NTkwMDU2MzAsImp0aSI6ImY0MTgwOWMwYWNiZDRmMzU4MzI5NjQxZGZiZDU3NjgzIiwidXNlcl9pZCI6NX0.VBKkou9vnW5WsR2T5S6UPLwZTMyCe7a-aMCdSAHBXus",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY3NjExNDI2LCJpYXQiOjE3Njc2MTExMjcsImp0aSI6ImMyYTBmZWQ5YzFlYTQ5NWJiYzQyYzdmNjE1MGE0YWM2IiwidXNlcl9pZCI6IjcifQ.L4uCeEdGWGLBJNxtRW35CK23WItSILG5pVOoc1YONZY",
 											"type": "string"
 										}
 									]
@@ -549,13 +540,13 @@
 								"method": "PATCH",
 								"header": [],
 								"url": {
-									"raw": "{{host}}/users/1/block",
+									"raw": "{{host}}/users/15/block",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"users",
-										"1",
+										"15",
 										"block"
 									]
 								}
@@ -570,7 +561,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU5MTc0NDU3LCJpYXQiOjE3NTkxNzQxNTcsImp0aSI6ImY2M2Y4ZDU4Y2RiODQwYzFhYzU5ZjJjMDU5ZGQ2MmM3IiwidXNlcl9pZCI6NX0.ZZXAnYmVJZQL_CMYdyP2--NQBC5q4wPYV5vlHVUVtwc",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY3NjExNDI2LCJpYXQiOjE3Njc2MTExMjcsImp0aSI6ImMyYTBmZWQ5YzFlYTQ5NWJiYzQyYzdmNjE1MGE0YWM2IiwidXNlcl9pZCI6IjcifQ.L4uCeEdGWGLBJNxtRW35CK23WItSILG5pVOoc1YONZY",
 											"type": "string"
 										}
 									]
@@ -578,13 +569,13 @@
 								"method": "PATCH",
 								"header": [],
 								"url": {
-									"raw": "{{host}}/users/1/unblock",
+									"raw": "{{host}}/users/15/unblock",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"users",
-										"1",
+										"15",
 										"unblock"
 									]
 								}
@@ -599,7 +590,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU5MTc5ODcwLCJpYXQiOjE3NTkxNzk1NzAsImp0aSI6IjRmMjg4ZjFmMDg3ODQ4ZGFiZDBmZmE1NWE0OWYwMDJkIiwidXNlcl9pZCI6N30.HQ-iS0zUoBd3gjUg78Yb6PppfOrm1lHo5U3Yltp9inA",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY3NjExNjg5LCJpYXQiOjE3Njc2MTEzODksImp0aSI6IjRiMzI2YjhmOWQ4NDRhMzdiYjg0NWE4YzcyMTM0NGVjIiwidXNlcl9pZCI6IjcifQ.9qhr4YGwt-378ZE97dh-poOb5J5bPS4YyxtycTmbdS4",
 											"type": "string"
 										}
 									]
@@ -654,7 +645,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\" : \"testSeller10@gmail.com\",\r\n    \"password\" : \"super123\",\r\n    \"profile\" : {\r\n        \"name\" : \"Daniel244323\",\r\n        \"surname\" : \"DanielGamers112\",\r\n        \"age\" : 20\r\n        \r\n\r\n    }\r\n}",
+							"raw": "{\r\n    \"email\" : \"testSeller15@gmail.com\",\r\n    \"password\" : \"super123\",\r\n    \"profile\" : {\r\n        \"name\" : \"Daniel244323\",\r\n        \"surname\" : \"DanielGamers112\",\r\n        \"age\" : 20\r\n        \r\n\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -719,7 +710,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY3MzEzMjU1LCJpYXQiOjE3NjczMTI5NTUsImp0aSI6ImE3NTM5ODhiZDUzYzRmNGNiODBjOWY3MDViYTk3Zjc3IiwidXNlcl9pZCI6MTJ9.cOaM3C6bvaw1OlUyFU1YBtQ6-gjjl96iMVCBbFv_ox8",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY3NjA3OTQwLCJpYXQiOjE3Njc2MDc2NDAsImp0aSI6IjEzN2M5ODljNmQyNzQ4NTFhMTVhMjU4NTg1YzdmNzI2IiwidXNlcl9pZCI6IjE0In0.uLvhMTX7VQrSUh6LznMx5JFsts6_8uL8Qdu7aqQYngE",
 									"type": "string"
 								}
 							]
@@ -727,13 +718,13 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/users/6/delete",
+							"raw": "{{host}}/users/14/delete",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"users",
-								"6",
+								"14",
 								"delete"
 							]
 						}
@@ -830,7 +821,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY3MzEzMjU1LCJpYXQiOjE3NjczMTI5NTUsImp0aSI6ImE3NTM5ODhiZDUzYzRmNGNiODBjOWY3MDViYTk3Zjc3IiwidXNlcl9pZCI6MTJ9.cOaM3C6bvaw1OlUyFU1YBtQ6-gjjl96iMVCBbFv_ox8",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY3NjA4MjAwLCJpYXQiOjE3Njc2MDc5MDAsImp0aSI6IjFmMzMxZmIzMDc4YTQ0Mjk5YTRkMWVlOWMyODYzZDVmIiwidXNlcl9pZCI6IjEyIn0.ZxTzKC6MKRMA38qmap43sHO5260IVCtEznfuagcKIfI",
 									"type": "string"
 								}
 							]

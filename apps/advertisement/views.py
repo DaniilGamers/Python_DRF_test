@@ -60,6 +60,10 @@ class AdvertisementCreateListView(ListCreateAPIView):
 
         ad.save()
 
+        if check_bad_words(ad.description):
+            print("Has foul language. Fix it right away!")
+            raise ValidationError("Has foul language. Fix it right away!")
+
 
 class AdvertisementListView(ListAPIView):
     serializer_class = AdvertisementSerializer
@@ -139,6 +143,12 @@ class AdvertisementRetrieveUpdateDestroyView(RetrieveUpdateDestroyAPIView):
                 ad.edit_attempts = 0
 
         ad.save(update_fields=['status', 'edit_attempts'])
+
+        if ad.edit_attempts >= 3:
+            raise ValidationError("Unfortunately you didn't remove foul language. The ad became inactive")
+
+        if check_bad_words(ad.description):
+            raise ValidationError("It still has foul language. Try edit again")
 
 
 class AdvertisementAddPhotoView(UpdateAPIView):

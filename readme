@@ -9,6 +9,13 @@ Notice:
   * Update EMAIL_HOST_USER and EMAIL_HOST_PASSWORD in settings.py.
   * Use your Gmail address and App Password.
 
+* Python version: 3.10+ recommended.
+* Always activate the virtual environment before installing dependencies and running the server.
+
+---
+
+Note: The .venv/venv folder is not included. Create a new virtual environment and install dependencies using requirements.txt before running the server.
+
 ---
 
 Activation:
@@ -16,7 +23,10 @@ Activation:
 For server activation:
 
 ```bash
-python manage.py runserver
+1. python -m venv venv
+2. venv/Scripts/activate(windows), venv/bin/activate(Linux/Mac)
+3. pip install -r requirements.txt
+4. python manage.py runserver
 ```
 
 Server runs at [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
@@ -101,7 +111,7 @@ Frontend (HTML + JS):
 
 * Frontend is separated from Django templates
 * Move HTML folder outside Django project (e.g., Desktop)
-* Open chat.html in a browser
+* Open chat.html in a browser (Change id of chat_id room into current created chat room id in main.js file in folder before logging into the account)
 * Open two browsers:
 
   * One logged in as client
@@ -109,6 +119,7 @@ Frontend (HTML + JS):
 * Send messages between users
 * Messages persist after page reload
 * Uses JWT, Fetch API, and CORS
+* Frontend stores the JWT token received from login and sends it in the 'Authorization' header for all requests.
 * Messages sorted by time
 
 ---
@@ -139,7 +150,11 @@ Final Notes:
 * Backend controls all sensitive fields (sender, buyer, seller)
 * Frontend never sends user IDs manually
 * Chat messages are secure and role-restricted
+* Frontend folder should be zipped together with the HTML/JS files for submission.
+* Postman collection also included in submission for testing API endpoints.
 
 Teacher note:
 
 * Frontend is separated intentionally to demonstrate API-only backend design.
+* Staff/Admin permissions are enforced via DRF permission classes.
+* Only staff or admin can block/unblock users.
