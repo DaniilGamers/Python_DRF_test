@@ -46,13 +46,13 @@ class AdManager(models.Manager):
 
         ad.viewed_total = ad.views.count()
         ad.viewed_in_day = ad.views.filter(
-            timestamp__gte=now - timedelta(seconds=10)
+            timestamp__gte=now - timedelta(seconds=15)
         ).count()
         ad.viewed_in_week = ad.views.filter(
-            timestamp__gte=now - timedelta(seconds=20)
+            timestamp__gte=now - timedelta(seconds=30)
         ).count()
         ad.viewed_in_month = ad.views.filter(
-            timestamp__gte=now - timedelta(seconds=30)
+            timestamp__gte=now - timedelta(seconds=45)
         ).count()
 
         ad.save(

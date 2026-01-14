@@ -1,3 +1,18 @@
+IMPORTANT:
+The project will ONLY launch after ALL steps below have been completed in a clean environment.
+---
+
+OPTIONAL
+
+* The .venv / venv folders are NOT included intentionally
+
+* The virtual environment must be created on the tester's local machine
+
+* The project was tested by running it completely from scratch in a clean environment
+
+
+---
+
 Project Setup & Usage Guide
 
 Notice:
@@ -18,16 +33,53 @@ Note: The .venv/venv folder is not included. Create a new virtual environment an
 
 ---
 
+OPTIONAL
+
+* The .venv / venv folders are NOT included intentionally
+
+* The virtual environment must be created on the tester's local machine
+
+* The project was tested by running it completely from scratch in a clean environment
+
+---
+
+ABOUT TESTING
+
+The project was tested:
+
+* via the console
+
+* via Postman (all requests from the collection)
+
+* taking into account roles and permissions
+
+* with JWT authentication
+
+* with a separate frontend (HTML + JS)
+
+* All functionality was tested before submission.
+
+---
+
+---
+
+IMPORTANT:
+The project will ONLY launch after ALL steps below have been completed in a clean environment.
+
+---
+
 Activation:
 
 For server activation:
 
-```bash
+```bash (Recommend to type commands on console by order in order to launch the server)
 1. python -m venv venv
-2. venv/Scripts/activate(windows), venv/bin/activate(Linux/Mac)
+2. venv/Scripts/activate(on Windows), venv/bin/activate(on Linux/Mac)
 3. pip install -r requirements.txt
 4. python manage.py runserver
 ```
+
+Skipping any of steps 1–3 will result in a server startup error.
 
 Server runs at [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
 
