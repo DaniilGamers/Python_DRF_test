@@ -9,6 +9,9 @@ Follow the instructions **exactly** in order:
 
 Skipping any step will cause errors.
 
+IMPORTANT: All commands for creating the virtual environment, installing dependencies, and running the server
+must be executed in a local terminal here, **not in an SSH console** or remote environment.
+
 !!ВАЖЛИВО!!
 
 Перед запуском проєкту, будь ласка, **ознайомтесь з readme.md** (англійська) або readme_ua.txt (українська).
@@ -19,3 +22,7 @@ Skipping any step will cause errors.
 3. Запустіть сервер
 
 Пропуск будь-якого кроку призведе до помилок.
+
+ВАЖЛИВО: Усі команди для створення віртуального середовища, встановлення залежностей та запуску сервера
+повинні виконуватися у **терміналі PyCharm** (або будь-якому локальному терміналі IDE) на вашому комп’ютері,
+не у SSH-консолі або віддаленому середовищі.
