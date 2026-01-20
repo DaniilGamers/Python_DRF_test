@@ -1,0 +1,21 @@
+!!IMPORTANT!!
+
+Before running the project, please **read readme.md** (English) or readme_ua.txt (Ukrainian).
+
+Follow the instructions **exactly** in order:
+1. Create & activate virtual environment
+2. Install dependencies
+3. Run the server
+
+Skipping any step will cause errors.
+
+!!ВАЖЛИВО!!
+
+Перед запуском проєкту, будь ласка, **ознайомтесь з readme.md** (англійська) або readme_ua.txt (українська).
+
+Дотримуйтесь інструкцій **точно в такому порядку**:
+1. Створіть та активуйте віртуальне середовище
+2. Встановіть залежності
+3. Запустіть сервер
+
+Пропуск будь-якого кроку призведе до помилок.

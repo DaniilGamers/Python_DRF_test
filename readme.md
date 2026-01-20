@@ -1,5 +1,21 @@
-IMPORTANT:
-The project will ONLY launch after ALL steps below have been completed in a clean environment.
+IMPORTANT: 
+
+The project will only run if you follow all steps below in a clean environment. Skipping any step will cause errors.
+
+Remember: Create and activate a virtual environment before installing dependencies
+
+After creating and activating venv, make sure Python and pip are available:
+python --version
+pip --version
+
+---
+
+Docker notice:
+This project does not require Docker.
+It runs using standard Python virtual environment and requirements.txt.
+Docker was not specified as a mandatory requirement in the assignment.
+The recommended and supported way to run the project is via venv.
+
 ---
 
 OPTIONAL
@@ -73,8 +89,8 @@ Activation:
 For server activation:
 
 ```bash (Recommend to type commands on console by order in order to launch the server)
-1. python -m venv venv
-2. venv/Scripts/activate(on Windows), venv/bin/activate(on Linux/Mac)
+1. python -m venv venv(on Windows), python3 -m venv venv(on Linux/Mac)
+2. venv/Scripts/activate(on Windows), source venv/bin/activate(on Linux/Mac)
 3. pip install -r requirements.txt
 4. python manage.py runserver
 ```
